@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "595540537161",
+    "project_id": "my-rent-app-project",
+    "storage_bucket": "my-rent-app-project.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595540537161:android:55e8817c674303327cb498",
+        "android_client_info": {
+          "package_name": "com.example.spotify_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBghG7QYoEe6NUsrqTncoLDFAErxbdtAws"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
