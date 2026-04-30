@@ -23,9 +23,9 @@ class _DashBoardPageState extends State<DashBoardPage> {
 
   final List<Widget> _pages = [
     const HomePage(),
-    const SearchPage(), // Thay bằng SearchPage() của bạn
-    const ArtistListPage(), // Thay bằng LibraryPage()
-    const ProfilePage(), // Thay bằng ProfilePage()
+    const SearchPage(), 
+    const ArtistListPage(),
+    const ProfilePage(), 
   ];
   @override
   Widget build(BuildContext context) {

@@ -66,6 +66,8 @@ class _ProfileInfoPageState extends State<ProfileInfoPage> with RouteAware {
         File image = File(pickedFile.path);
         context.read<ProfileInfoCubit>().updateAvatar(image);
 
+        
+
         // --- LOGIC TEST NHANH KHI CHƯA CÓ CUBIT ---
         // Bạn có thể gọi trực tiếp service qua Service Locator 'sl'
         // sl<UserFirebaseService>()

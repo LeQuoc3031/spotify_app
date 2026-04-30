@@ -25,11 +25,9 @@ class _LyricsViewState extends State<LyricsView> {
 
   @override
   Widget build(BuildContext context) {
-    // final topPadding = MediaQuery.of(context).viewPadding.top;
     return SizedBox(
       height: MediaQuery.of(context).size.height,
       width: double.infinity,
-      // padding: EdgeInsets.only(top: topPadding + 40),
       child: Stack(
         children: [
           BlocBuilder<SongPlayerCubit, SongPlayerState>(
@@ -275,7 +273,6 @@ class _LyricsViewState extends State<LyricsView> {
         );
       }
     });
-    // print('currentLyricIndex: ${state.currentLyricIndex}');
     return ScrollablePositionedList.builder(
       padding: EdgeInsets.only(bottom: containerHeight / 2),
       itemCount: state.lyrics.length,

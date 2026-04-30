@@ -16,8 +16,6 @@ class ProfileSettingPage extends StatelessWidget {
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       routeSettings: const RouteSettings(name: '/setting'),
       builder: (context) {
-        // Giả sử bạn đang dùng ThemeCubit để quản lý state của Theme
-        // Nếu dùng Theme.of(context).brightness cũng được nhưng Cubit sẽ chuẩn hơn
         final currentTheme = Theme.of(context).brightness;
 
         return Container(
@@ -226,13 +224,6 @@ class ProfileSettingPage extends StatelessWidget {
                     '/signup-signin',
                     (route) => false,
                   );
-                  // Navigator.pushAndRemoveUntil(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => const SignupOrSigninPage(),
-                  //   ),
-                  //   (route) => false,
-                  // );
                 },
                 child: Container(
                   padding: const EdgeInsets.symmetric(vertical: 20),

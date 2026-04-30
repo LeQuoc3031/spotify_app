@@ -131,13 +131,10 @@ class MyApp extends StatelessWidget {
               }
 
               if (settings.name == '/album') {
-                // 2. Lấy dữ liệu arguments và ép kiểu về ArtistEntity
                 final album = settings.arguments as AlbumEntity;
 
-                // 3. Trả về Route với dữ liệu thật
                 return MaterialPageRoute(
-                  settings:
-                      settings, // BẮT BUỘC có dòng này để MyRouteObserver hoạt động
+                  settings: settings,
                   builder: (context) => AlbumPage(albumEntity: album),
                 );
               }
@@ -193,19 +190,15 @@ class MyApp extends StatelessWidget {
               }
 
               if (settings.name == '/playlist') {
-                // 2. Lấy dữ liệu arguments và ép kiểu về ArtistEntity
                 final playlist = settings.arguments as PlayListEntity;
 
-                // 3. Trả về Route với dữ liệu thật
                 return MaterialPageRoute(
-                  settings:
-                      settings, // BẮT BUỘC có dòng này để MyRouteObserver hoạt động
+                  settings: settings,
                   builder: (context) =>
                       PlayListSongPage(playlistEntity: playlist),
                 );
               }
 
-              // Xử lý các route khác (như /player) tương tự ở đây...
               if (settings.name == '/player') {
                 return MaterialPageRoute(
                   settings: settings,
@@ -252,11 +245,6 @@ class MyApp extends StatelessWidget {
                       valueListenable: currentRouteName,
                       builder: (context, name, _) {
                         print("Current Route Name: $name");
-
-                        // Nếu là màn hình player thì ẩn thanh mini đi
-                        // if (name == '/player') {
-                        //   return const SizedBox();
-                        // }
                         // Kiểm tra trạng thái Cubit để hiện Mini Player
                         double bottomPadding =
                             name == '/artist' ||
@@ -296,10 +284,6 @@ class MyApp extends StatelessWidget {
                                     : const SizedBox.shrink(),
                               ),
                             );
-
-                            // if (state is SongPlayerLoaded) {
-                            //   return MyMiniPlayed(bottomPadding, state, context);
-                            // }
                           },
                         );
                       },
@@ -519,7 +503,6 @@ class MyApp extends StatelessWidget {
                         color: AppColors.primary,
                       ),
                       child: Icon(
-                        // context.read<SongPlayerCubit>().audioPlayer.playing
                         state.isPlaying ? Icons.pause : Icons.play_arrow,
                         size: 15,
                       ),

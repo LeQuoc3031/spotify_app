@@ -56,13 +56,6 @@ class _RecentlyPlayedState extends State<RecentlyPlayed> {
                           index,
                           'recentlyPlayed',
                         );
-
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => const SongPlayerPage(),
-                        //   ),
-                        // );
                         Navigator.pushNamed(context, '/player');
                       },
                       child: SizedBox(
@@ -72,7 +65,6 @@ class _RecentlyPlayedState extends State<RecentlyPlayed> {
                           children: [
                             Expanded(
                               child: Container(
-                                // color: Colors.blue,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   image: DecorationImage(

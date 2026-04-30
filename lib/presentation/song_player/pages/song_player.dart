@@ -508,7 +508,6 @@ class _SongPlayerPageState extends State<SongPlayerPage> {
         builder: (context, state) {
           print('state: $state');
           var duration = context.read<SongPlayerCubit>().songDuration;
-          // print('duration: $duration');
           if (state is SongPlayerLoading || duration == Duration.zero) {
             return const Align(
               alignment: Alignment.center,
@@ -553,7 +552,6 @@ class _SongPlayerPageState extends State<SongPlayerPage> {
           ),
           onPressed: () {},
         ),
-        // const SizedBox(width: 10),
         GestureDetector(
           onTap: () {
             context.read<SongPlayerCubit>().loadLyrics(
@@ -580,7 +578,6 @@ class _SongPlayerPageState extends State<SongPlayerPage> {
             ],
           ),
         ),
-        // const SizedBox(width: 10),
         IconButton(
           icon: Icon(
             Icons.playlist_add,
@@ -729,7 +726,6 @@ class _SongPlayerPageState extends State<SongPlayerPage> {
                   color: AppColors.primary,
                 ),
                 child: Icon(
-                  // context.read<SongPlayerCubit>().audioPlayer.playing
                   state.isPlaying ? Icons.pause : Icons.play_arrow,
                   size: 30,
                 ),

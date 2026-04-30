@@ -116,7 +116,7 @@ class ProfileInfoCubit extends Cubit<ProfileInfoState> {
       String error = "Đã có lỗi xảy ra";
       // Kiểm tra mã lỗi từ Firebase
       if (e.code == 'wrong-password' || e.code == 'invalid-credential') {
-        error = "Mật khẩu cũ không chính xác"; // <-- Dòng chữ bạn yêu cầu
+        error = "Mật khẩu cũ không chính xác";
       }
       print("error: $error");
       emit(ProfileUpdatedFailure(errorMessage: error));

@@ -42,7 +42,7 @@ class _AlbumPageState extends State<AlbumPage> {
               expandedHeight: 450, // Chiều cao tối đa để chứa ảnh và nút
               backgroundColor: context.isDarkMode
                   ? Colors.black
-                  : Colors.white, // AppBar trong suốt
+                  : Colors.white, 
               elevation: 0,
               leading: IconButton(
                 icon: const Icon(
@@ -50,28 +50,23 @@ class _AlbumPageState extends State<AlbumPage> {
                   color: Colors.white,
                 ), // Nút back
                 onPressed: () =>
-                    Navigator.of(context).pop(), // Xử lý sự kiện back
+                    Navigator.of(context).pop(), 
               ),
               actions: [],
               // flexibleSpace là nơi Flutter tự động xử lý hiệu ứng "mờ dần"
               flexibleSpace: FlexibleSpaceBar(
-                // Tiêu đề nhỏ hiện ra khi app bar bị thu nhỏ
-                // title: const Text(
-                //   'Album detail',
-                //   style: TextStyle(color: Colors.white, fontSize: 16),
-                // ),
                 centerTitle: true,
                 // Đặt tất cả phần background được làm mờ vào đây
                 background: _buildBlurredAlbumHeader(
                   context,
                   widget.albumEntity,
                 ),
-                // collapseMode.fade: phần header sẽ mờ dần khi kéo lên
-                collapseMode: CollapseMode.parallax,
+                
+                collapseMode: CollapseMode.parallax, // 
               ),
             ),
 
-            // 2. PHẦN DANH SÁCH BÀI HÁT (Lướt thoải mái)
+            // 2. PHẦN DANH SÁCH BÀI HÁT
             SliverPadding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               sliver: BlocBuilder<AlbumCubit, AlbumState>(
@@ -83,12 +78,10 @@ class _AlbumPageState extends State<AlbumPage> {
                   }
                   if (state is AlbumLoaded) {
                     return SliverList.separated(
-                      // Hàm trả về Widget từng bài hát
                       itemBuilder: (context, index) =>
                           _songs(context, state, index),
                       itemCount: state.songs.length,
                       separatorBuilder: (context, index) {
-                        // Khoảng cách giữa các bài hát (không xuất hiện sau item cuối cùng)
                         return const SizedBox(height: 20);
                       },
                     );
@@ -112,15 +105,7 @@ class _AlbumPageState extends State<AlbumPage> {
           index,
           'allSong',
         );
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(builder: (context) => const SongPlayerPage()),
-        // ).then((value) {
-        //   // print('state: $value');
-        //   if (!context.mounted) return;
-        //   context.read<AlbumCubit>().getAlbumSongs(widget.albumEntity.albumId!);
-        // });
-
+       
         Navigator.pushNamed(context, '/player').then((value) {
           // print('state: $value');
           if (!context.mounted) return;
@@ -188,7 +173,7 @@ class _AlbumPageState extends State<AlbumPage> {
   ) {
     return Stack(
       children: [
-        // 1. Ảnh nền Full màn hình được làm mờ (Giống logic của bạn)
+        // 1. Ảnh nền Full màn hình được làm mờ 
         Container(
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -222,13 +207,12 @@ class _AlbumPageState extends State<AlbumPage> {
 
         // 2. PHẦN NỘI DUNG HEADER NẰM TRÊN CÙNG
         Positioned(
-          top: 80, // Cách AppBar một khoảng
+          top: 80, 
           left: 20,
           right: 20,
           bottom: 20,
           child: Column(
             children: [
-              // Ảnh album chính và bo góc
               Container(
                 height: 200,
                 width: 200,
@@ -249,9 +233,6 @@ class _AlbumPageState extends State<AlbumPage> {
                   ],
                 ),
               ),
-
-              // Tên nghệ sĩ và Album
-              // HÀNG NÚT: Favorite, Comment, Shuffle
             ],
           ),
         ),
@@ -297,15 +278,6 @@ class _AlbumPageState extends State<AlbumPage> {
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        // SvgPicture.asset(
-                        //   AppVectors.heart,
-                        //   colorFilter: ColorFilter.mode(
-                        //     context.isDarkMode ? Colors.white : Colors.black,
-                        //     BlendMode.srcIn,
-                        //   ),
-                        //   height: 26,
-                        //   width: 26,
-                        // ),
                         FavoriteButtonAlbum(albumEntity: albumEntity),
                         const SizedBox(width: 20),
                         SvgPicture.asset(
@@ -341,7 +313,6 @@ class _AlbumPageState extends State<AlbumPage> {
                                   context.read<SongPlayerCubit>().loadSongs(
                                     state.songs,
                                     Random().nextInt(state.songs.length),
-                                    // Random().nextInt(state.songs.length),
                                     'shuffleSong',
                                   );
 
@@ -351,7 +322,6 @@ class _AlbumPageState extends State<AlbumPage> {
                                   Navigator.pushNamed(context, '/player').then((
                                     value,
                                   ) {
-                                    // print('state: $value');
                                     if (!context.mounted) return;
                                     context.read<AlbumCubit>().getAlbumSongs(
                                       widget.albumEntity.albumId!,
@@ -398,7 +368,6 @@ class _AlbumPageState extends State<AlbumPage> {
                                   Navigator.pushNamed(context, '/player').then((
                                     value,
                                   ) {
-                                    // print('state: $value');
                                     if (!context.mounted) return;
                                     context.read<AlbumCubit>().getAlbumSongs(
                                       widget.albumEntity.albumId!,

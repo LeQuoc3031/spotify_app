@@ -1,5 +1,4 @@
 // ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify_app/common/helpers/is_dark_mode_ext.dart';
@@ -44,7 +43,6 @@ class _ArtistProfilePageState extends State<ArtistProfilePage> with RouteAware {
 
   @override
   Widget build(BuildContext context) {
-    // SỬA ĐỔI CHÍNH Ở ĐÂY: Sử dụng CustomScrollView làm body
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -60,7 +58,7 @@ class _ArtistProfilePageState extends State<ArtistProfilePage> with RouteAware {
       child: Scaffold(
         backgroundColor: context.isDarkMode
             ? Colors.black
-            : Colors.white, // Đặt nền đen sâu
+            : Colors.white, 
         body: CustomScrollView(
           slivers: [
             // 1. SliverAppBar để chứa ảnh và các lớp phủ
@@ -74,7 +72,7 @@ class _ArtistProfilePageState extends State<ArtistProfilePage> with RouteAware {
               actions: [
                 IconButton(
                   icon: const Icon(Icons.more_vert, color: Colors.white),
-                  onPressed: () {}, // Xử lý sự kiện "Xem thêm"
+                  onPressed: () {}, 
                 ),
               ],
               // Đặt độ cao mong muốn cho khu vực ảnh
@@ -82,7 +80,6 @@ class _ArtistProfilePageState extends State<ArtistProfilePage> with RouteAware {
               pinned: false, // Để nó cuộn đi khi vuốt lên
               // FlexibleSpaceBar là nơi chứa nội dung thay đổi theo độ mở
               flexibleSpace: FlexibleSpaceBar(
-                // Đưa Container ảnh vào đây
                 background: Stack(
                   children: [
                     _profileImageWithCorners(context),
@@ -165,7 +162,7 @@ class _ArtistProfilePageState extends State<ArtistProfilePage> with RouteAware {
               builder: (context, state) {
                 if (state is ArtistAlbumLoaded && state.albums.isNotEmpty) {
                   return SliverPersistentHeader(
-                    pinned: true, // Đây là chìa khóa để nó ở yên trên top
+                    pinned: true, // để nó ở yên trên top
                     delegate: _StickyAlbumDelegate(
                       child: Container(
                         color: context.isDarkMode ? Colors.black : Colors.white,
@@ -193,7 +190,7 @@ class _ArtistProfilePageState extends State<ArtistProfilePage> with RouteAware {
                                 height: 200,
                                 child: _albums(
                                   widget.artistEntity,
-                                ), // Hàm của baise(), // Hàm của bạn trả về ListView.builder ngang
+                                ), 
                               ),
                             ],
                           ),
@@ -211,7 +208,7 @@ class _ArtistProfilePageState extends State<ArtistProfilePage> with RouteAware {
               delegate: _StickyHeaderDelegate("Songs"),
             ),
 
-            // 4. DANH SÁCH BÀI HÁT (Lướt thoải mái)
+            // 4. DANH SÁCH BÀI HÁT 
             SliverPadding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               sliver: BlocBuilder<ArtistSongCubit, ArtistSongState>(

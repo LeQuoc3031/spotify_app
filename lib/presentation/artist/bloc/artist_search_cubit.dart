@@ -18,8 +18,6 @@ class ArtistSearchCubit extends Cubit<ArtistSearchState> {
     }
     emit(ArtistSearchLoading());
     try {
-      // Giả sử bạn lấy toàn bộ ca sí từ Firebase hoặc một Repo
-      // Sau đó filter local dựa trên query
       var artists = await sl<GetArtistsUseCase>().call(); 
 
       artists.fold((l) {}, (data) {

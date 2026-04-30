@@ -7,7 +7,6 @@ class UserEntity {
   String? phone;  
   String? email;
   String? avatarUrl;
-  String? imageURL;
 
   UserEntity({
     this.userId,
@@ -18,7 +17,6 @@ class UserEntity {
     this.birthday,
     this.gender,
     this.phone,
-    this.imageURL,
   });
 
   UserEntity copyWith({
@@ -30,7 +28,6 @@ class UserEntity {
     String? birthday,
     String? gender,
     String? phone,
-    String? imageURL,
   }) {
     return UserEntity(
       userId: userId ?? this.userId,
@@ -41,7 +38,6 @@ class UserEntity {
       birthday: birthday ?? this.birthday,
       gender: gender ?? this.gender,
       phone: phone ?? this.phone,
-      imageURL: imageURL ?? this.imageURL,
     );
   }
 }

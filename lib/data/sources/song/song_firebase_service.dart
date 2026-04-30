@@ -15,8 +15,8 @@ abstract class SongFirebaseService {
   Future<bool> isFavoriteSong(String songId);
   Future<Either> getFavoriteSongs();
   Future<Either> getRecentlyPlayed();
-
   Future<void> addRecentlyPlayed(SongModel songModel);
+  Future<Either> getSongSearch(String query);
 }
 
 class SongFirebaseServiceImpl implements SongFirebaseService {
@@ -40,12 +40,6 @@ class SongFirebaseServiceImpl implements SongFirebaseService {
           ).copyWith(isFavorite: isFavorite, songId: element.reference.id),
         );
       }
-
-      // for (var song in songs) {
-      //   print(
-      //     '${AppUrls.songFirestorage}${song.artist} - ${song.title}.mp3?${AppUrls.mediaAlt}',
-      //   );
-      // }
 
       return Right(songs);
     } catch (e) {
@@ -82,9 +76,6 @@ class SongFirebaseServiceImpl implements SongFirebaseService {
           ).copyWith(isFavorite: isFavorite, songId: element.reference.id),
         );
       }
-
-      // 3. Trả về một Map chứa cả danh sách bài hát và Document cuối cùng
-      // để Cubit có thể lưu lại và dùng cho lần gọi tiếp theo
       return Right({
         'songs': songs,
         'lastDoc': data.docs.isNotEmpty ? data.docs.last : null,
@@ -94,34 +85,36 @@ class SongFirebaseServiceImpl implements SongFirebaseService {
       return const Left('An error occurred, please try again.');
     }
   }
-  // Future<Either> getPlayList() async {
-  //   try {
-  //     List<SongEntity> songs = [];
-  //     final data = await FirebaseFirestore.instance
-  //         .collection('Songs')
-  //         .orderBy('title')
-  //         .limit(10)
-  //         .get();
 
-  //     for (var element in data.docs) {
-  //       bool isFavorite = await sl<IsFavoriteSongUseCase>().call(
-  //         params: element.reference.id,
-  //       );
+  @override
+  Future<Either> getSongSearch(String query) async {
+    try {
+      // String cleanQuery = removeDiacritics(query);
+      // 1. Tạo query cơ bản: Sắp xếp theo ngày phát hành giảm dần và giới hạn 10 bài
+      final data = await FirebaseFirestore.instance
+          .collection('Songs')
+          .where('searchKeywords', arrayContains: query)
+          .get();
 
-  //       songs.add(
-  //         SongModel.fromJson(
-  //           element.data(),
-  //         ).copyWith(isFavorite: isFavorite, songId: element.reference.id),
-  //       );
-  //     }
-  //     print('songs : ${songs.length}');
+      List<SongEntity> songs = [];
+      for (var element in data.docs) {
+        bool isFavorite = await sl<IsFavoriteSongUseCase>().call(
+          params: element.reference.id,
+        );
 
-  //     return Right(songs);
-  //   } catch (e) {
-  //     print('getPlayList ==> $e');
-  //     return const Left('An error occurred, Please try again');
-  //   }
-  // }
+        songs.add(
+          SongModel.fromJson(
+            element.data(),
+          ).copyWith(isFavorite: isFavorite, songId: element.reference.id),
+        );
+      }
+      print('songs ==> $songs');
+      return Right(songs);
+    } catch (e) {
+      print(e);
+      return const Left('An error occurred, please try again.');
+    }
+  }
 
   @override
   Future<Either> addOrRemoveFavoriteSongs(String songId) async {

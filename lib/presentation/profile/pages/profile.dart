@@ -74,7 +74,6 @@ class _ProfilePageState extends State<ProfilePage> with RouteAware {
               pinned: false, // Để nó cuộn đi khi vuốt lên
               // FlexibleSpaceBar là nơi chứa nội dung thay đổi theo độ mở
               flexibleSpace: FlexibleSpaceBar(
-                // Đưa Container ảnh vào đây
                 background: _profileInfo(context),
               ),
             ),
@@ -93,12 +92,7 @@ class _ProfilePageState extends State<ProfilePage> with RouteAware {
 
   Widget _profileInfo(BuildContext context) {
     return Container(
-      // height: MediaQuery.of(context).size.height/ 2.5,
-      // width: double.infinity,
       decoration: BoxDecoration(
-        // color: context.isDarkMode
-        //     ? Colors.black
-        //     : Colors.white,
         borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(50),
           bottomRight: Radius.circular(50),
@@ -156,35 +150,6 @@ class _ProfilePageState extends State<ProfilePage> with RouteAware {
                         fontSize: 22,
                       ),
                     ),
-                    // InkWell(
-                    //   onTap: () {
-                    //     Navigator.pushNamed(context, '/profile-info');
-                    //   },
-                    //   child: Container(
-                    //     transform: Matrix4.translationValues(0, 40, 0),
-                    //     height: 40,
-                    //     width: 100,
-                    //     decoration: BoxDecoration(
-                    //       borderRadius: BorderRadius.circular(50),
-                    //       border: Border.all(
-                    //         color: context.isDarkMode
-                    //             ? Colors.white
-                    //             : Colors.black,
-                    //       ),
-                    //     ),
-                    //     child: Center(
-                    //       child: Text(
-                    //         'Sửa hồ sơ',
-                    //         style: TextStyle(
-                    //           color: context.isDarkMode
-                    //               ? Colors.white
-                    //               : Colors.black,
-                    //           fontWeight: FontWeight.bold,
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
                   ],
                 );
               }

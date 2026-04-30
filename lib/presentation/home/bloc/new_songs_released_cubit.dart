@@ -76,11 +76,6 @@ class NewSongsReleasedCubit extends Cubit<NewSongsReleasedState> {
       }
       audioPlayer.pause();
 
-      // if (audioPlayer.playing) {
-      //   audioPlayer.pause();
-      // } else {
-      //   audioPlayer.play();
-      // }
       audioPlayer.playerStateStream.listen((playerState) {
         if (playerState.processingState == ProcessingState.completed) {
           // 1. Quay về đầu bài hát
@@ -92,14 +87,6 @@ class NewSongsReleasedCubit extends Cubit<NewSongsReleasedState> {
           emit(NewSongsReleasedLoaded(songs: songs));
         }
       });
-
-      // audioPlayer.currentIndexStream.listen((index) {
-      //   if (index != null && index < songs.length) {
-      //     final currentSong = songs[index];
-      //     _updateRecentlyPlayed(currentSong);
-      //     print('save next song played');
-      //   }
-      // });
 
       emit(NewSongsReleasedLoaded(songs: songs));
     } catch (e) {

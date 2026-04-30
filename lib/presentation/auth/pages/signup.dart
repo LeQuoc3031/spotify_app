@@ -25,7 +25,7 @@ class _SignupPageState extends State<SignupPage> {
   final TextEditingController _fullnameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  bool isObscure = true;
+  bool _isPasswordVisible = false;
 
   String? fullnameError;
   String? emailError;
@@ -75,13 +75,12 @@ class _SignupPageState extends State<SignupPage> {
           child: BlocListener<AuthCubit, AuthState>(
             listener: (context, state) {
               if (state is SignupLoading) {
-                // 1. Khi đang chạy hàm signup -> Hiện loading screen
                 showLoadingProgress(context);
               }
               if (state is SignupSuccess) {
-                // 2. Khi đang chạy hàm signup -> Hiện loading screen
+                
                 Navigator.pop(context);
-                // 3. Hành động sau khi chạy hàm signup thành công
+                
                 context.read<AuthCubit>().updatedUser(state.userEntity);
                 Navigator.pushAndRemoveUntil(
                   context,
@@ -160,7 +159,7 @@ class _SignupPageState extends State<SignupPage> {
                     if (_fullnameController.text.isEmpty ||
                         _emailController.text.isEmpty ||
                         _passwordController.text.isEmpty) {
-                      // Có thể dùng ScaffoldMessenger báo lỗi chung hoặc set error cho từng ô
+                    
                       setState(() {
                         fullnameError = "Full name không được để trống";
                         emailError = "Email không được để trống";
@@ -184,7 +183,7 @@ class _SignupPageState extends State<SignupPage> {
                       return;
                     }
 
-                    // 4. Nếu mọi thứ ổn, gọi Cubit
+                    // 4.gọi Cubit
                     context.read<AuthCubit>().signup(
                       CreateUserReq(
                         fullName: _fullnameController.text.toString(),
@@ -192,41 +191,37 @@ class _SignupPageState extends State<SignupPage> {
                         password: _passwordController.text.toString(),
                       ),
                     );
-                    // var result = await sl<SignupUseCase>().call(
-                    //   params: CreateUserReq(
-                    //     fullName: _fullnameController.text.toString(),
-                    //     email: _emailController.text.toString(),
-                    //     password: _passwordController.text.toString(),
-                    //   ),
-                    // );
-
-                    // result.fold(
-                    //   (l) {
-                    //     ScaffoldMessenger.of(context).showSnackBar(
-                    //       SnackBar(
-                    //         content: Text(l),
-                    //         behavior: SnackBarBehavior.floating,
-                    //       ),
-                    //     );
-                    //   },
-                    //   (r) {
-                    //     print('SIGNUPUSER: $r');
-                    //     context.read<AuthCubit>().updatedUser(r);
-                    //     Navigator.pushAndRemoveUntil(
-                    //       context,
-                    //       MaterialPageRoute(
-                    //         builder: (context) => const DashBoardPage(),
-                    //       ),
-                    //       (route) => false,
-                    //     );
-                    //     // print("===> ĐĂNG KÝ THÀNH CÔNG, ĐANG CHUYỂN TRANG...");
-                    //   },
-                    // );
+                    
                   },
                   title: 'Create Account',
                 ),
-                const SizedBox(height: 21),
+                const SizedBox(height: 20),
                 _divider(),
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        // Xử lý đăng ký Google
+                      },
+                      icon: SvgPicture.asset(
+                        'assets/vectors/google_logo.svg',
+                        width: 30,
+                      ),
+                    ),
+                    const SizedBox(width: 40),
+                    IconButton(
+                      onPressed: () {
+                        // Xử lý đăng ký Apple
+                      },
+                      icon: SvgPicture.asset(
+                        'assets/vectors/apple_logo.svg',
+                        width: 30,
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
@@ -267,8 +262,19 @@ class _SignupPageState extends State<SignupPage> {
   Widget _passwordField(BuildContext context) {
     return TextField(
       controller: _passwordController,
+      obscureText: !_isPasswordVisible,
       inputFormatters: [FilteringTextInputFormatter.deny(RegExp(r'\s'))],
-      decoration: const InputDecoration(
+      decoration: InputDecoration(
+        suffixIcon: IconButton(
+          onPressed: () {
+            setState(() {
+              _isPasswordVisible = !_isPasswordVisible;
+            });
+          },
+          icon: Icon(
+            _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+          ),
+        ),
         hintText: 'Password',
       ).applyDefaults(Theme.of(context).inputDecorationTheme),
     );

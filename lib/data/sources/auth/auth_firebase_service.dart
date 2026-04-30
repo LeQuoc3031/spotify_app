@@ -78,7 +78,6 @@ class AuthFirebaseServiceImpl implements AuthFirebaseService {
         fullName: createUserReq.fullName,
         email: data.user?.email,
         avatarUrl: AppUrls.defaultImage,
-        imageURL: data.user?.photoURL ?? AppUrls.defaultImage,
       );
 
       return Right(userModel);
@@ -107,13 +106,7 @@ class AuthFirebaseServiceImpl implements AuthFirebaseService {
           .get();
 
       UserModel userModel = UserModel.fromJson(user.data()!)
-      // .copyWith(
-      //   imageURL: firebaseAuth.currentUser?.photoURL ?? AppUrls.defaultImage,
-      // )
       ;
-      // userModel.copyWith(
-      //   imageURL: firebaseAuth.currentUser?.photoURL ?? AppUrls.defaultImage,
-      // );
 
       return Right(userModel);
     } catch (e) {

@@ -61,20 +61,14 @@ class _FavoriteSongPageState extends State<FavoriteSongPage> {
               actions: [],
               // flexibleSpace là nơi Flutter tự động xử lý hiệu ứng "mờ dần"
               flexibleSpace: FlexibleSpaceBar(
-                // Tiêu đề nhỏ hiện ra khi app bar bị thu nhỏ
-                // title: const Text(
-                //   'Album detail',
-                //   style: TextStyle(color: Colors.white, fontSize: 16),
-                // ),
                 centerTitle: true,
                 // Đặt tất cả phần background được làm mờ vào đây
                 background: _buildBlurredAlbumHeader(context),
-                // collapseMode.fade: phần header sẽ mờ dần khi kéo lên
                 collapseMode: CollapseMode.parallax,
               ),
             ),
 
-            // 2. PHẦN DANH SÁCH BÀI HÁT (Lướt thoải mái)
+            // 2. PHẦN DANH SÁCH BÀI HÁT 
             SliverPadding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               sliver: BlocBuilder<FavoriteSongCubit, FavoriteSongState>(

@@ -9,36 +9,6 @@ import 'package:spotify_app/domain/usecases/auth/signup_usecase.dart';
 import 'package:spotify_app/presentation/auth/bloc/auth_state.dart';
 import 'package:spotify_app/service_locator.dart';
 
-// class AuthCubit extends HydratedCubit<AuthState>{
-
-//   AuthCubit() : super(AuthInitial());
-
-//   void updatedUser(UserEntity userEntity){
-//     emit(Authenticated(userEntity: userEntity));
-//   }
-
-//   void logout(){
-//     emit(UnAuthenticated());
-//   }
-
-//   @override
-//   AuthState? fromJson(Map<String, dynamic> json) {
-//     try{
-//       return Authenticated(userEntity: UserModel.fromJson(json['user']));
-//     }catch (_){
-//       return UnAuthenticated();
-//     }
-//   }
-
-//   @override
-//   Map<String, dynamic>? toJson(AuthState state) {
-//     if(state is Authenticated){
-//       return {'user': (state.userEntity as UserModel).toJson()};
-//     }
-//     return null;
-//   }
-// }
-
 class AuthCubit extends HydratedCubit<AuthState> {
   AuthCubit() : super(AuthInitial());
 
@@ -81,7 +51,7 @@ class AuthCubit extends HydratedCubit<AuthState> {
         'user': (state.userEntity as UserModel).toJson(),
       };
     }
-    // QUAN TRỌNG: Trả về một Map cụ thể thay vì null để ghi đè dữ liệu cũ khi Logout
+    // Trả về một Map cụ thể thay vì null để ghi đè dữ liệu cũ khi Logout
     return {'status': 'unauthenticated'};
   }
 
@@ -93,7 +63,6 @@ class AuthCubit extends HydratedCubit<AuthState> {
 
       result.fold(
         (l) {
-          // 'l' là message lỗi trả về từ Repository/Firebase
           emit(SignupFailure(errorMessage: l));
         },
         (r) {

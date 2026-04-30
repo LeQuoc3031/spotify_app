@@ -38,20 +38,10 @@ class _SearchSongListState extends State<SearchSongList> {
   void _onScroll() {
     // 1. Dùng >= thay vì == để chắc chắn bắt được sự kiện
     // 2. Kiểm tra thêm: danh sách phải có bài mới cho load more
-
-    if (context.read<SearchSongCubit>().searchController.text.isNotEmpty) {
-      if (_scrollController.position.pixels >=
-          _scrollController.position.maxScrollExtent - 200) {
-        if (widget.songs.isNotEmpty) {
-          context.read<SearchSongCubit>().getMoreSongs();
-        }
-      }
-    } else {
-      if (_scrollController.position.pixels >=
-          _scrollController.position.maxScrollExtent - 200) {
-        if (widget.songs.isNotEmpty) {
-          context.read<SearchListCubit>().getMoreSongs();
-        }
+    if (_scrollController.position.pixels >=
+        _scrollController.position.maxScrollExtent - 200) {
+      if (widget.songs.isNotEmpty) {
+        context.read<SearchListCubit>().getMoreSongs();
       }
     }
   }
@@ -127,22 +117,12 @@ class _SearchSongListState extends State<SearchSongList> {
   ) {
     return GestureDetector(
       onTap: () {
-        // Logic chuyển sang màn hình Player của bạn
         context.read<SongPlayerCubit>().loadSongs(songs, index, idPlayList);
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(builder: (context) => const SongPlayerPage()),
-        // ).then((value) {
-        //   // print('state: $value');
-        //   if (!context.mounted) return;
-        //   context.read<FavoriteSongCubit>().getFavoriteSong();
-        // });
+
         Navigator.pushNamed(context, '/player').then((value) {
-          // print('state: $value');
           if (!context.mounted) return;
           context.read<SearchListCubit>().getPlayList();
         });
-        
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

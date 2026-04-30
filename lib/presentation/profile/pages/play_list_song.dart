@@ -92,20 +92,13 @@ class _PlayListSongPageState extends State<PlayListSongPage> with RouteAware {
               actions: [],
               // flexibleSpace là nơi Flutter tự động xử lý hiệu ứng "mờ dần"
               flexibleSpace: FlexibleSpaceBar(
-                // Tiêu đề nhỏ hiện ra khi app bar bị thu nhỏ
-                // title: const Text(
-                //   'Album detail',
-                //   style: TextStyle(color: Colors.white, fontSize: 16),
-                // ),
                 centerTitle: true,
-                // Đặt tất cả phần background được làm mờ vào đây
                 background: _buildBlurredAlbumHeader(context),
-                // collapseMode.fade: phần header sẽ mờ dần khi kéo lên
                 collapseMode: CollapseMode.parallax,
               ),
             ),
 
-            // 2. PHẦN DANH SÁCH BÀI HÁT (Lướt thoải mái)
+            // 2. PHẦN DANH SÁCH BÀI HÁT
             SliverPadding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               sliver: BlocBuilder<PlayListCubit, PlayListState>(
@@ -135,28 +128,6 @@ class _PlayListSongPageState extends State<PlayListSongPage> with RouteAware {
                                 children: [
                                   SlidableAction(
                                     onPressed: (context) {
-                                      // Logic xoá bài hát ở đây
-                                      // context
-                                      //     .read<PlayListCubit>()
-                                      //     .removeSongFromPlaylist(
-                                      //       playlistId: currentPlaylistId,
-                                      //       songId: song.songId,
-                                      //     );
-                                      //  context
-                                      //               .read<PlayListCubit>()
-                                      //               .removeSongFromPlaylist(
-                                      //                 req: RemoveSongFromPlaylistReq(
-                                      //                   playlistId: widget
-                                      //                       .playlistEntity
-                                      //                       .playlistId,
-                                      //                   songId: state
-                                      //                       .songs[index]
-                                      //                       .songId!,
-                                      //                 ),
-                                      //                 playlistEntity:
-                                      //                     widget.playlistEntity,
-                                      //               );
-
                                       showDialog(
                                         context: context,
                                         routeSettings: const RouteSettings(
@@ -187,44 +158,7 @@ class _PlayListSongPageState extends State<PlayListSongPage> with RouteAware {
                                                                 .songs[index]
                                                                 .songId!,
                                                           ),
-                                                      // playlistEntity:
-                                                      //     widget.playlistEntity,
                                                     );
-                                                //  sl<
-                                                //       RemoveSongFromPlaylistUseCase
-                                                //     >()
-                                                //     .call(
-                                                //       params:
-                                                //           RemoveSongFromPlaylistReq(
-                                                //             playlistId: widget
-                                                //                 .playlistEntity
-                                                //                 .playlistId,
-                                                //             songId: state
-                                                //                 .songs[index]
-                                                //                 .songId!,
-                                                //           ),
-                                                //     );
-                                                // if (!context.mounted) return;
-
-                                                // context
-                                                //     .read<PlayListCubit>()
-                                                //     .getSongInPlayList(
-                                                //       widget.playlistEntity.copyWith(
-                                                //         playlistId: widget
-                                                //             .playlistEntity
-                                                //             .playlistId,
-                                                //         songs:
-                                                //             widget
-                                                //                 .playlistEntity
-                                                //                 .songs
-                                                //               ..remove(
-                                                //                 state
-                                                //                     .songs[index]
-                                                //                     .songId,
-                                                //               ),
-                                                //       ),
-                                                //     );
-
                                                 Navigator.of(context).pop();
                                               },
                                               child: const Text("Xoá"),
@@ -238,7 +172,6 @@ class _PlayListSongPageState extends State<PlayListSongPage> with RouteAware {
                                     foregroundColor: Colors.white,
                                     icon: Icons.delete,
                                     label: 'Xoá',
-                                    // borderRadius: BorderRadius.circular(8), // Nếu bạn muốn nút bo góc
                                   ),
                                 ],
                               ),
@@ -246,7 +179,6 @@ class _PlayListSongPageState extends State<PlayListSongPage> with RouteAware {
                             ),
                             itemCount: state.songs.length,
                             separatorBuilder: (context, index) {
-                              // Khoảng cách giữa các bài hát (không xuất hiện sau item cuối cùng)
                               return const SizedBox(height: 20);
                             },
                           );
@@ -274,17 +206,7 @@ class _PlayListSongPageState extends State<PlayListSongPage> with RouteAware {
           index,
           'allSong${widget.playlistEntity.playlistId}',
         );
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(builder: (context) => const SongPlayerPage()),
-        // ).then((value) {
-        //   // print('state: $value');
-        //   if (!context.mounted) return;
-        //   context.read<AlbumCubit>().getAlbumSongs(widget.albumEntity.albumId!);
-        // });
-
         Navigator.pushNamed(context, '/player').then((value) {
-          // print('state: $value');
           if (!context.mounted) return;
           context.read<PlayListCubit>().getSongInPlayList(
             widget.playlistEntity,
@@ -373,21 +295,9 @@ class _PlayListSongPageState extends State<PlayListSongPage> with RouteAware {
                 ),
               );
             }
-            return Container(
-              // decoration: BoxDecoration(
-              //   gradient: LinearGradient(
-              //     begin: Alignment.topCenter,
-              //     end: Alignment.bottomCenter,
-              //     colors: [
-              //       context.isDarkMode ? Colors.grey : Colors.white,
-              //       Colors.transparent,
-              //     ],
-              //   ),
-              // ),
-            );
+            return Container();
           },
         ),
-
         Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -402,7 +312,7 @@ class _PlayListSongPageState extends State<PlayListSongPage> with RouteAware {
         ),
         // 2. PHẦN NỘI DUNG HEADER NẰM TRÊN CÙNG
         Positioned(
-          top: 80, // Cách AppBar một khoảng
+          top: 80, 
           left: 20,
           right: 20,
           bottom: 20,
@@ -497,7 +407,6 @@ class _PlayListSongPageState extends State<PlayListSongPage> with RouteAware {
                 BlocBuilder<ProfileInfoCubit, ProfileInfoState>(
                   builder: (context, state) {
                     if (state is ProfileInfoLoading) {
-                      //Dùng để tránh UI bị giật giật Khi tên user chưa loading xong
                       return Container(height: 20);
                     }
                     if (state is ProfileInfoLoaded) {
@@ -578,7 +487,6 @@ class _PlayListSongPageState extends State<PlayListSongPage> with RouteAware {
                                   Navigator.pushNamed(context, '/player').then((
                                     value,
                                   ) {
-                                    // print('state: $value');
                                     if (!context.mounted) return;
                                     context
                                         .read<PlayListCubit>()
@@ -625,7 +533,6 @@ class _PlayListSongPageState extends State<PlayListSongPage> with RouteAware {
                                   Navigator.pushNamed(context, '/player').then((
                                     value,
                                   ) {
-                                    // print('state: $value');
                                     if (!context.mounted) return;
                                     context
                                         .read<PlayListCubit>()

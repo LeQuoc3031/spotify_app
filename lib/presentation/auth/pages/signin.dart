@@ -93,14 +93,38 @@ class _SigninPageState extends State<SigninPage> {
                         ),
                         (route) => false,
                       );
-                      // print("===> ĐĂNG KÝ THÀNH CÔNG, ĐANG CHUYỂN TRANG...");
                     },
                   );
                 },
                 title: 'Sign In',
               ),
-              const SizedBox(height: 21),
+              const SizedBox(height: 20),
               _divider(),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      // Xử lý đăng nhập Google
+                    },
+                    icon: SvgPicture.asset(
+                      'assets/vectors/google_logo.svg',
+                      width: 30,
+                    ),
+                  ),
+                  const SizedBox(width: 40),
+                  IconButton(
+                    onPressed: () {
+                      // Xử lý đăng nhập Apple
+                    },
+                    icon: SvgPicture.asset(
+                      'assets/vectors/apple_logo.svg',
+                      width: 30,
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
@@ -156,7 +180,7 @@ class _SigninPageState extends State<SigninPage> {
             'Or',
             style: TextStyle(
               fontSize: 14,
-              color: Colors.grey[800], // Hoặc AppColors.grey của bạn
+              color: Colors.grey[800],
             ),
           ),
         ),

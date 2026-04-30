@@ -45,12 +45,6 @@ class NewsSongs extends StatelessWidget {
         onTap: () {
           context.read<SongPlayerCubit>().loadSongs(songs, index, 'newSongs');
 
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(builder: (context) => const SongPlayerPage()),
-          // ).then((value) {
-          //   context.read<NewSongsReleasedCubit>().getNewSongsReleased();
-          // });
           Navigator.pushNamed(context, '/player').then((value) {
             if (!context.mounted) return;
             context.read<NewSongsReleasedCubit>().getNewSongsReleased();
@@ -63,7 +57,6 @@ class NewsSongs extends StatelessWidget {
             children: [
               Expanded(
                 child: Container(
-                  // color: Colors.blue,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(

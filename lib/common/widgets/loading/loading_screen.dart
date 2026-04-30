@@ -5,7 +5,7 @@ class LoadingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return const Center(child: CircularProgressIndicator());
-    return Center(child: Container(height: 20, width: 20, color: Colors.blue));
+    return const Center(child: CircularProgressIndicator());
+    // return Center(child: Container(height: 20, width: 20, color: Colors.blue));
   }
 }

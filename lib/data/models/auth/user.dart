@@ -10,7 +10,6 @@ class UserModel extends UserEntity {
     super.birthday,
     super.gender,
     super.phone,
-    super.imageURL,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
@@ -49,7 +48,6 @@ class UserModel extends UserEntity {
     String? birthday,
     String? gender,
     String? phone,
-    String? imageURL,
   }) {
     return UserModel(
       userId: userId ?? this.userId,
@@ -60,7 +58,6 @@ class UserModel extends UserEntity {
       birthday: birthday ?? this.birthday,
       gender: gender ?? this.gender,
       phone: phone ?? this.phone,
-      imageURL: imageURL ?? this.imageURL,
     );
   }
 }

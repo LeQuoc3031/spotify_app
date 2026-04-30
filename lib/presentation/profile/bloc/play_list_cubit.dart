@@ -47,13 +47,9 @@ class PlayListCubit extends Cubit<PlayListState> {
   Future<void> deletePlaylist({required List<String> selectedIds}) async {
     try {
       await sl<DeletePlayListUseCase>().call(params: selectedIds.toList());
-      // playListsEntity.removeWhere(
-      //   (playlist) => selectedIds.contains(playlist.playlistId),
-      // );
 
        emit(PlayListLoaded(playLists: playListsEntity));
     } catch (e) {
-      // Emit lỗi hoặc hiển thị thông báo
       print('removeSongFromPlaylist error ==> $e');
     }
   }
@@ -66,7 +62,6 @@ class PlayListCubit extends Cubit<PlayListState> {
       playlistSongs.removeWhere((song) => song.songId == req.songId);
       emit(LoadedSongInPlayList(songs: playlistSongs));
     } catch (e) {
-      // Emit lỗi hoặc hiển thị thông báo
       print('removeSongFromPlaylist error ==> $e');
     }
   }
@@ -97,7 +92,7 @@ class PlayListCubit extends Cubit<PlayListState> {
         },
       );
     } catch (e) {
-      // print('getSongInPlayList error ==> $e');
+      print('getSongInPlayList error ==> $e');
     }
   }
 }

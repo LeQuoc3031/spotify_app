@@ -10,4 +10,5 @@ abstract class SongRepository {
   Future<Either> getFavoriteSongs();
   Future<void> addRecentlyPlayed(SongEntity song);
   Future<Either> getRecentlyPlayed();
+  Future<Either> getSongSearch(String query);
 }

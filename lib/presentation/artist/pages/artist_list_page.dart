@@ -102,13 +102,6 @@ class ArtistListPage extends StatelessWidget {
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) =>
-                  //         ArtistProfilePage(artistEntity: state.artists[index]),
-                  //   ),
-                  // );
                   Navigator.pushNamed(
                     context,
                     '/artist',
@@ -161,13 +154,6 @@ class ArtistListPage extends StatelessWidget {
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) =>
-                //         ArtistProfilePage(artistEntity: artists[index]),
-                //   ),
-                // );
                 Navigator.pushNamed(
                   context,
                   '/artist',

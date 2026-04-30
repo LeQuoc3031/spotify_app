@@ -42,6 +42,7 @@ import 'package:spotify_app/domain/usecases/song/get_favorite_songs_usecase.dart
 import 'package:spotify_app/domain/usecases/song/get_news_songs_usecase.dart';
 import 'package:spotify_app/domain/usecases/song/get_search_list_usecase.dart';
 import 'package:spotify_app/domain/usecases/song/get_recently_played_usecase.dart';
+import 'package:spotify_app/domain/usecases/song/get_song_search_usecase.dart';
 import 'package:spotify_app/domain/usecases/song/is_favorite_song_usecase.dart';
 
 final sl = GetIt.instance;
@@ -96,6 +97,8 @@ Future<void> initializeDependencies() async {
   sl.registerLazySingleton<GetNewsSongsUseCase>(() => GetNewsSongsUseCase());
 
   sl.registerLazySingleton<GetSearchListUseCase>(() => GetSearchListUseCase());
+
+  sl.registerLazySingleton<GetSearchSongUseCase>(() => GetSearchSongUseCase());
 
   sl.registerLazySingleton<AddOrRemoveFavoriteSongUseCase>(
     () => AddOrRemoveFavoriteSongUseCase(),

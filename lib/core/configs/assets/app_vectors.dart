@@ -23,4 +23,6 @@ class AppVectors {
   static const String musicNote = "${basePath}music_note$format";
   static const String checkList = "${basePath}check_list$format";
   static const String alertSquare = "${basePath}alert_square$format";
+  static const String googleLogo = "${basePath}google_logo$format";
+  static const String appleLogo = "${basePath}apple_logo$format";
 }

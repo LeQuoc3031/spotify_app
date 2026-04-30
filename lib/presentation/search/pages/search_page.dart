@@ -34,6 +34,13 @@ class _SearchPageState extends State<SearchPage> with RouteAware {
       context.read<SearchSongCubit>().searchId,
     );
   }
+  
+  // @override
+  // void initState() {
+  //   print('SearchPage initState');
+  //   context.read<SearchSongCubit>().loadInitialSongs();
+  //   super.initState();
+  // }
 
   @override
   void dispose() {

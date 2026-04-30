@@ -42,4 +42,9 @@ class SongRepositoryImpl implements SongRepository {
   Future<Either> getRecentlyPlayed() async {
     return await sl<SongFirebaseService>().getRecentlyPlayed();
   }
+
+  @override
+  Future<Either> getSongSearch(String quuery) async {
+    return await sl<SongFirebaseService>().getSongSearch(quuery);
+  }
 }
