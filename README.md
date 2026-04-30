@@ -71,3 +71,25 @@
 
   </table>
 </p>
+
+
+## 🚀 Hướng dẫn thiết lập (Setup)
+
+### 1. Cấu hình Firebase
+Dự án này sử dụng Firebase cho Authentication và Firestore. Để chạy dự án, bạn cần:
+
+1. Tạo một dự án mới trên [Firebase Console](https://console.firebase.google.com/).
+2. Cài đặt **FlutterFire CLI**:
+   ```bash
+   dart pub global activate flutterfire_cli
+
+3. Cấu hình Firebase cho dự án:
+   ```bash
+   flutterfire configure
+4. Đảm bảo file lib/firebase_options.dart đã được tạo (file này hiện đang được đưa vào .gitignore để bảo mật).
+5. Cài đặt Dependencies
+   ```bash
+   flutter pub get
+6. Chạy ứng dụng
+7. ```bash
+   flutter run
