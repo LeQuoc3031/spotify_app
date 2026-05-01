@@ -153,99 +153,109 @@ Dự án này sử dụng Firebase cho Authentication và Firestore. Để chạ
    Sign-in method --> Add new provider --> Select Email/Password
 
 2. Firestore
-  ```
-  Tất cả các Collection cần phải tạo
+    ```
+    Tất cả các Collection cần phải tạo
 <p align="center">
   <img src="screenshots/database/all_collection.png" width="1000">
 </p>
-  ```
-  Collection User:
-    - Sẽ tự động tạo khi đăng ký 
-    - Bên trong mỗi user sẽ có 3 subcollection 
-      * Favorites : tự động tạo khi nhất nút thích bài hát trong app
-      * FavoriteAlbums : sẽ tự động tạo khi nhất thích album trong app
-      * RecentlyPlayed : sẽ tự động tạo khi nhấn vào nghe một bài hát bất kỳ
+
+    Collection User:
+      - Sẽ tự động tạo khi đăng ký 
+      - Bên trong mỗi user sẽ có 3 subcollection 
+        * Favorites : tự động tạo khi nhất nút thích bài hát trong app
+        * FavoriteAlbums : sẽ tự động tạo khi nhất thích album trong app
+        * RecentlyPlayed : sẽ tự động tạo khi nhấn vào nghe một bài hát bất kỳ
 <p align="center">
   <img src="screenshots/database/collection_user.png" width="1000">
 </p>
-  ```
-  Collection Playlists:
-    - Sẽ tự động tạo khi tạo một playlist trong app
+
+    Collection Playlists:
+      - Sẽ tự động tạo khi tạo một playlist trong app
+
 <p align="center">
   <img src="screenshots/database/collection_playlist.png" width="1000">
 </p>
-  ```
-  Collection Artists:
-    - Phải tự nhập thông tin
+
+    Collection Artists:
+      - Phải tự nhập thông tin
 <p align="center">
   <img src="screenshots/database/collection_artist.png" width="1000">
 </p>
-  ```
-  Collection Albums:
-    - Phải tự nhập thông tin
+
+    Collection Albums:
+      - Phải tự nhập thông tin
 <p align="center">
   <img src="screenshots/database/collection_album.png" width="1000">
 </p>
-  ```
-  Collection Songs:
-    = Phải tự nhập thông tin (Khá nhiều và rất lâu)
+
+    Collection Songs:
+      - Phải tự nhập thông tin (Khá nhiều và rất lâu)
 <p align="center">
   <img src="screenshots/database/collection_song.png" width="1000">
 </p>
 
 
 3. Storage
-  ```
-  Tất cả các Storage cần phải tạo
+    ```
+    Tất cả các Storage cần phải tạo
 <p align="center">
   <img src="screenshots/database/collection_song.png" width="1000">
 </p>
-  ```
-  Mở tab Rules để thiết lập một số quyền hạn
+  
+    Mở tab Rules để thiết lập một số quyền hạn
 <p align="center">
   <img src="screenshots/database/rule_storage.png" width="1000">
 </p>
-  ```
-  Storage users:
-    - Tạo trước một folder rỗng 
-    - Dùng để chứa avatar của mỗi user khi đổi avater trong app
+
+    Storage users:
+      - Tạo trước một folder rỗng 
+      - Dùng để chứa avatar của mỗi user khi đổi avater trong app
 <p align="center">
   <img src="screenshots/database/storage_user.png" width="1000">
 </p>
-  ```
-  Storage artists:
-    - Phải tự thêm dữ liệu
-    - Tên hình ảnh phải giống với field "artist" của Songs 
+  
+    Storage artists:
+      - Phải tự thêm dữ liệu
+      - Tên hình ảnh phải giống với field "artist" của Songs 
 <p align="center">
   <img src="screenshots/database/storage_artist.png" width="1000">
 </p>
-  ```
-  Storage albums:
-    - Phải tự thêm dữ liệu
-    - Tên album phải giống với field "title" của Albums 
+  
+    Storage albums:
+      - Phải tự thêm dữ liệu
+      - Tên album phải giống với field "title" của Albums 
 <p align="center">
   <img src="screenshots/database/storage_artist.png" width="1000">
 </p>
-  ```
-  Storage covers:
-    - Phải tự thêm dữ liệu
-    - Tên cover phải đạt theo cấu trúc [artist] - [title].jpg tương ứng với các field trong Songs 
+
+    Storage covers:
+      - Phải tự thêm dữ liệu
+      - Tên cover phải đạt theo cấu trúc [artist] - [title].jpg tương ứng với các field trong Songs 
 <p align="center">
   <img src="screenshots/database/storage_cover.png" width="1000">
 </p>
-  ```
-  Storage lyrics:
-    - Phải tự thêm dữ liệu
-    - Tên lyric phải đạt theo cấu trúc [artist] - [title].lrc.txt tương ứng với các field trong Songs 
-  
-  Bạn muốn tạo file lrc thì dùng [LRC Generator](https://lrcgenerator.com/#google_vignette)
+
+    Storage lyrics:
+      - Phải tự thêm dữ liệu
+      - Tên lyric phải đạt theo cấu trúc [artist] - [title].lrc.txt tương ứng với các field trong Songs 
+    
+    Bạn muốn tạo file lrc thì dùng [LRC Generator](https://lrcgenerator.com/#google_vignette)
 <p align="center">
   <img src="screenshots/database/storage_lyric.png" width="1000">
 </p>
-  ```
-  Storage songs:
-    - Phải tự thêm dữ liệu
-    - Tên song phải đạt theo cấu trúc [artist] - [title].mp3 tương ứng với các field trong Songs 
+  
+    
+    Storage songs:
+      - Phải tự thêm dữ liệu
+      - Tên song phải đạt theo cấu trúc [artist] - [title].mp3 tương ứng với các field trong Songs 
 <p align="center">
   <img src="screenshots/database/storage_song.png" width="1000">
 </p>
+
+
+## Demo App
+[[Xem Demo Video](https://youtu.be/7EyEogCistA)
+
+
+
+
