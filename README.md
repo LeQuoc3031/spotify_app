@@ -254,7 +254,7 @@ Dự án này sử dụng Firebase cho Authentication và Firestore. Để chạ
 
 
 ## Demo App
-[[Xem Demo Video](https://youtu.be/7EyEogCistA)
+[Xem Demo Video](https://youtu.be/7EyEogCistA)
 
 
 
