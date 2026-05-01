@@ -131,7 +131,7 @@ Dự án này sử dụng Firebase cho Authentication và Firestore. Để chạ
    ```bash
    flutter pub get
 6. Chạy ứng dụng
-7. ```bash
+   ```bash
    flutter run
 
 ### 2. Cấu hình Database
@@ -139,3 +139,101 @@ Dự án này sử dụng Firebase cho Authentication và Firestore. Để chạ
    ```
    Trên thanh menu bên trái --> Chọn Authentication -->
    Sign-in method --> Add new provider --> Select Email/Password
+
+2. Firestore
+  ```
+  Tất cả các Collection cần phải tạo
+<p align="center">
+  <img src="screenshots/database/all_collection.png" width="600">
+</p>
+  ```
+  Collection User:
+    - Sẽ tự động tạo khi đăng ký 
+    - Bên trong mỗi user sẽ có 3 subcollection 
+      * Favorites : tự động tạo khi nhất nút thích bài hát trong app
+      * FavoriteAlbums : sẽ tự động tạo khi nhất thích album trong app
+      * RecentlyPlayed : sẽ tự động tạo khi nhấn vào nghe một bài hát bất kỳ
+<p align="center">
+  <img src="screenshots/database/collection_user.png" width="600">
+</p>
+  ```
+  Collection Playlists:
+    - Sẽ tự động tạo khi tạo một playlist trong app
+<p align="center">
+  <img src="screenshots/database/collection_playlist.png" width="600">
+</p>
+  ```
+  Collection Artists:
+    - Phải tự nhập thông tin
+<p align="center">
+  <img src="screenshots/database/collection_artist.png" width="600">
+</p>
+  ```
+  Collection Albums:
+    = Phải tự nhập thông tin
+<p align="center">
+  <img src="screenshots/database/collection_album.png" width="600">
+</p>
+  ```
+  Collection Songs:
+    = Phải tự nhập thông tin (Khá nhiều và rất lâu)
+<p align="center">
+  <img src="screenshots/database/collection_song.png" width="600">
+</p>
+
+
+3. Storage
+  ```
+  Tất cả các Storage cần phải tạo
+<p align="center">
+  <img src="screenshots/database/collection_song.png" width="600">
+</p>
+  ```
+  Mở tab Rules để thiết lập một số quyền hạn
+<p align="center">
+  <img src="screenshots/database/rule_storage.png" width="600">
+</p>
+  ```
+  Storage users:
+    - Tạo trước một folder rỗng 
+    - Dùng để chứa avatar của mỗi user khi đổi avater trong app
+<p align="center">
+  <img src="screenshots/database/storage_user.png" width="600">
+</p>
+  ```
+  Storage artists:
+    - Phải tự thêm dữ liệu
+    - Tên hình ảnh phải giống với field "artist" của Songs 
+<p align="center">
+  <img src="screenshots/database/storage_artist.png" width="600">
+</p>
+  ```
+  Storage albums:
+    - Phải tự thêm dữ liệu
+    - Tên album phải giống với field "title" của Albums 
+<p align="center">
+  <img src="screenshots/database/storage_artist.png" width="600">
+</p>
+  ```
+  Storage covers:
+    - Phải tự thêm dữ liệu
+    - Tên cover phải đạt theo cấu trúc [artist] - [title].jpg tương ứng với các field trong Songs 
+<p align="center">
+  <img src="screenshots/database/storage_cover.png" width="600">
+</p>
+  ```
+  Storage lyrics:
+    - Phải tự thêm dữ liệu
+    - Tên lyric phải đạt theo cấu trúc [artist] - [title].lrc.txt tương ứng với các field trong Songs 
+  
+  Bạn muốn tạo file lrc thì dùng [LRC Generator](https://lrcgenerator.com/#google_vignette)
+<p align="center">
+  <img src="screenshots/database/storage_lyric.png" width="600">
+</p>
+  ```
+  Storage songs:
+    - Phải tự thêm dữ liệu
+    - Tên song phải đạt theo cấu trúc [artist] - [title].mp3 tương ứng với các field trong Songs 
+<p align="center">
+  <img src="screenshots/database/storage_lyric.png" width="600">
+</p>
