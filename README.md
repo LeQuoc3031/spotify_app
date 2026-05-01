@@ -4,7 +4,12 @@ App này một phần làm theo youtube, một phần là sử dụng AI để �
 cho nên app vẫn còn một số lỗi nhỏ.
 Source được tổ chức theo kiến trúc Clean Architecture, State Management là Cubit (Bloc)
 
-## 📸 App Screenshots
+# <a id="mục-lục"></a>📌 Mục lục
+* [📸 App Screenshots](#app-screenshots)
+* [🚀 Hướng dẫn thiết lập (Setup)](#hướng-dẫn-thiết-lập-setup)
+* [🎬 Demo App](#demo-app)
+
+## <a id="app-screenshots"></a> [📸 App Screenshots](#mục-lục)
 
 ### ☀️ Light Mode
 
@@ -125,7 +130,7 @@ Source được tổ chức theo kiến trúc Clean Architecture, State Manageme
 </p>
 
 
-## 🚀 Hướng dẫn thiết lập (Setup)
+## <a id="hướng-dẫn-thiết-lập-setup"></a> [🚀 Hướng dẫn thiết lập (Setup)](#mục-lục)
 
 ### 1. Cấu hình Firebase
 Dự án này sử dụng Firebase cho Authentication và Firestore. Để chạy dự án, bạn cần:
@@ -253,7 +258,7 @@ Dự án này sử dụng Firebase cho Authentication và Firestore. Để chạ
 </p>
 
 
-## Demo App
+## <a id="demo-app"></a> [🎬 Demo App](#mục-lục)
 [Xem Demo Video](https://youtu.be/7EyEogCistA)
 
 
