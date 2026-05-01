@@ -110,6 +110,7 @@ class AuthFirebaseServiceImpl implements AuthFirebaseService {
 
       return Right(userModel);
     } catch (e) {
+      print('getUser error: $e');
       return const Left('An error occurred!');
     }
   }

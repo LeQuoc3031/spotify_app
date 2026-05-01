@@ -60,9 +60,11 @@ class _ChangePasswordWidgetState extends State<ChangePassword> {
     });
   }
 
+
   void showLoadingProgress(BuildContext context) {
     showDialog(
       context: context,
+      routeSettings: const RouteSettings(name: '/change-password'),
       barrierDismissible: false, // Không cho phép nhấn ra ngoài để đóng
       builder: (context) => const LoadingScreen(),
     );
@@ -219,7 +221,7 @@ class _ChangePasswordWidgetState extends State<ChangePassword> {
                     //         null; // Xóa lỗi khi người dùng bắt đầu nhập lại
                     //   });
                     // }
-                    if (_oldPassCon.text== _newPassCon.text) {
+                    if (_oldPassCon.text == _newPassCon.text) {
                       setState(() {
                         _isNewPasswordMatch = false;
                       });

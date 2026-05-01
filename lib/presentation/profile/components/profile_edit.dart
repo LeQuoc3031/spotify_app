@@ -190,9 +190,12 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
         SizedBox(
           height: 200,
           child: CupertinoTheme(
-            data: const CupertinoThemeData(
+            data: CupertinoThemeData(
               textTheme: CupertinoTextThemeData(
-                dateTimePickerTextStyle: TextStyle(fontSize: 16),
+                dateTimePickerTextStyle: TextStyle(
+                  color: context.isDarkMode ? Colors.white : Colors.black,
+                  fontSize: 16,
+                ),
               ),
             ),
             child: CupertinoDatePicker(

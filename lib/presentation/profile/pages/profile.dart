@@ -25,6 +25,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> with RouteAware {
   @override
   void initState() {
+    context.read<ProfileInfoCubit>().getUser();
     super.initState();
   }
 
@@ -37,7 +38,6 @@ class _ProfilePageState extends State<ProfilePage> with RouteAware {
   @override
   void didPopNext() {
     print("User đã quay lại ProfilePage - Đang làm mới dữ liệu...");
-
     context.read<ProfileInfoCubit>().getUser();
   }
 
@@ -169,7 +169,10 @@ class _ProfilePageState extends State<ProfilePage> with RouteAware {
     return [
       InkWell(
         onTap: () {
-          Navigator.pushNamed(context, '/setting');
+          Navigator.pushNamed(context, '/setting').then((value) {
+            if (!context.mounted) return;
+            context.read<ProfileInfoCubit>().getUser();
+          });
         },
         child: Icon(
           Icons.settings,

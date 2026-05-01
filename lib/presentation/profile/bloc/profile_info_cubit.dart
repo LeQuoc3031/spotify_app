@@ -12,20 +12,26 @@ import 'package:spotify_app/service_locator.dart';
 
 class ProfileInfoCubit extends Cubit<ProfileInfoState> {
   ProfileInfoCubit() : super(ProfileInfoInitial()) {
-    getUser();
+    // getUser();
   }
 
   Future<void> getUser() async {
     emit(ProfileInfoLoading());
     final user = await sl<GetUserUseCase>().call();
 
-    user.fold((l) => emit(ProfileInfoFailure(message: l.message)), (
-      userEntity,
-    ) {
-      if (!isClosed) {
-        emit(ProfileInfoLoaded(userEntity: userEntity));
-      }
-    });
+    user.fold(
+      (l) {
+        print('l: $l');
+        if (!isClosed) {
+          emit(ProfileInfoFailure(message: l.toString()));
+        }
+      },
+      (userEntity) {
+        if (!isClosed) {
+          emit(ProfileInfoLoaded(userEntity: userEntity));
+        }
+      },
+    );
   }
 
   // Hàm upload avatar

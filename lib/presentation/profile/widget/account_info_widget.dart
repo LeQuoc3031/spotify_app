@@ -4,7 +4,6 @@ import 'package:spotify_app/common/helpers/is_dark_mode_ext.dart';
 import 'package:spotify_app/core/configs/theme/app_colors.dart';
 import 'package:spotify_app/presentation/profile/bloc/profile_info_cubit.dart';
 import 'package:spotify_app/presentation/profile/bloc/profile_info_state.dart';
-import 'package:spotify_app/presentation/profile/components/change_password.dart';
 import 'package:spotify_app/presentation/profile/ultils/args/profile_edit_args.dart';
 import 'package:spotify_app/presentation/profile/ultils/enums/profile_enum.dart';
 
@@ -181,12 +180,12 @@ class AccountInfoWidget extends StatelessWidget {
                   const SizedBox(height: 20),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ChangePassword(),
-                        ),
-                      );
+                      Navigator.pushNamed(context, '/change-password').then((
+                        value,
+                      ) {
+                        if (!context.mounted) return;
+                        context.read<ProfileInfoCubit>().getUser();
+                      });
                     },
                     child: const Row(
                       children: [
