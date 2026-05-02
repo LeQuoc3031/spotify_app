@@ -5,6 +5,23 @@ App này một phần làm theo youtube, một phần là sử dụng AI để �
 cho nên app vẫn còn một số lỗi nhỏ.
 Source được tổ chức theo kiến trúc Clean Architecture, State Management là Cubit (Bloc)
 
+## 📲 Tải về trải nghiệm (Android)
+Bạn có thể tải trực tiếp file APK để cài đặt và trải nghiệm ứng dụng trên điện thoại Android:
+
+*   📥 **[Tải Spotify_Clone.apk tại đây](https://github.com/LeQuoc3031/spotify_app/releases/download/v1.0.0/app-release.apk)**
+
+> **Lưu ý:**
+> 
+> Vì đây là file APK từ nguồn ngoài Google Play, bạn cần cho phép "Cài đặt ứng dụng từ nguồn không xác định" trên điện thoại của mình.
+> 
+> Chức năng Register và Change Password đã bị khoá (Locked)
+> 
+> Sử dụng tài khoản Demo này để trải nghiệm
+> 
+> Email: demo@gmail.com
+> 
+> Password: 123abc@
+
 # <a id="mục-lục"></a>📌 Mục lục
 
 - [📸 App Screenshots](#app-screenshots)
