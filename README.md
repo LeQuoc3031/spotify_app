@@ -296,7 +296,7 @@ Dự án này sử dụng Firebase cho Authentication và Firestore. Để chạ
           - Phải tự thêm dữ liệu
           - Tên album phải giống với field "title" của Albums
   <p align="center">
-      <img src="screenshots/database/storage_artist.png" width="1000">
+      <img src="screenshots/database/storage_album.png" width="1000">
     </p>
 
         Storage covers:
@@ -330,7 +330,7 @@ Dự án này sử dụng Firebase cho Authentication và Firestore. Để chạ
 
 Để ứng dụng có dữ liệu nhạc và hình ảnh hiển thị ngay lập tức, bạn cần tải lên các tệp tin mẫu:
 
-1.  **Tải dữ liệu mẫu:** [Tải file StorageData.zip tại đây](./storage_data/StorageData.zip) (hoặc link trực tiếp từ GitHub của bạn).
+1.  **Tải dữ liệu mẫu:** [Tải file StorageData.zip tại đây](./storage_data/StorageData.zip).
 2.  Truy cập vào **Firebase Console** -> **Storage**.
 3.  Tạo các thư mục tương ứng (ví dụ: `songs/`, `covers/`, `artists/`).
 4.  Upload các file từ thư mục đã giải nén vào các thư mục tương ứng trên Firebase.
