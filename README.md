@@ -156,7 +156,7 @@ Source được tổ chức theo kiến trúc Clean Architecture, State Manageme
     <tr>
         <td align="center">Favorite Song</td>
         <td align="center">Playlist</td>
-        <td align="center">Favorite Song</td>
+        <td align="center">Favorite Album</td>
         <td align="center">Profile Info</td>
     </tr>
 
@@ -199,30 +199,28 @@ Dự án này sử dụng Firebase cho Authentication và Firestore. Để chạ
     Trên thanh menu bên trái --> Chọn Authentication -->
     Sign-in method --> Add new provider --> Select Email/Password
 
-    ```
-
 2.  Firestore
-
     ```
     Tất cả các Collection cần phải tạo
-    <p align="center">
+    
+  <p align="center">
       <img src="screenshots/database/all_collection.png" width="1000">
-    </p>
+  </p>
+  
+      Collection User:
+        - Sẽ tự động tạo khi đăng ký
+         - Bên trong mỗi user sẽ có 3 subcollection
+           * Favorites : tự động tạo khi nhất nút thích bài hát trong app
+           * FavoriteAlbums : sẽ tự động tạo khi nhất thích album trong app
+           * RecentlyPlayed : sẽ tự động tạo khi nhấn vào nghe một bài hát bất kỳ
 
-        Collection User:
-          - Sẽ tự động tạo khi đăng ký
-          - Bên trong mỗi user sẽ có 3 subcollection
-            * Favorites : tự động tạo khi nhất nút thích bài hát trong app
-            * FavoriteAlbums : sẽ tự động tạo khi nhất thích album trong app
-            * RecentlyPlayed : sẽ tự động tạo khi nhấn vào nghe một bài hát bất kỳ
-
-    <p align="center">
+   <p align="center">
       <img src="screenshots/database/collection_user.png" width="1000">
-    </p>
+  </p>
 
-        Collection Playlists:
-          - Sẽ tự động tạo khi tạo một playlist trong app
-    ```
+    Collection Playlists:
+      - Sẽ tự động tạo khi tạo một playlist trong app
+    
 
 <p align="center">
   <img src="screenshots/database/collection_playlist.png" width="1000">
@@ -253,34 +251,34 @@ Dự án này sử dụng Firebase cho Authentication và Firestore. Để chạ
 
     ```
     Tất cả các Storage cần phải tạo
-    <p align="center">
-      <img src="screenshots/database/collection_song.png" width="1000">
-    </p>
+  <p align="center">
+      <img src="screenshots/database/all_storage.png" width="1000">
+  </p>
 
         Mở tab Rules để thiết lập một số quyền hạn
-    <p align="center">
+ <p align="center">
       <img src="screenshots/database/rule_storage.png" width="1000">
-    </p>
+  </p>   
 
         Storage users:
           - Tạo trước một folder rỗng
           - Dùng để chứa avatar của mỗi user khi đổi avater trong app
 
-    <p align="center">
+   <p align="center">
       <img src="screenshots/database/storage_user.png" width="1000">
     </p>
 
         Storage artists:
           - Phải tự thêm dữ liệu
           - Tên hình ảnh phải giống với field "artist" của Songs
-    <p align="center">
+  <p align="center">
       <img src="screenshots/database/storage_artist.png" width="1000">
     </p>
 
         Storage albums:
           - Phải tự thêm dữ liệu
           - Tên album phải giống với field "title" của Albums
-    <p align="center">
+  <p align="center">
       <img src="screenshots/database/storage_artist.png" width="1000">
     </p>
 
@@ -288,7 +286,7 @@ Dự án này sử dụng Firebase cho Authentication và Firestore. Để chạ
           - Phải tự thêm dữ liệu
           - Tên cover phải đạt theo cấu trúc [artist] - [title].jpg tương ứng với các field trong Songs
 
-    <p align="center">
+   <p align="center">
       <img src="screenshots/database/storage_cover.png" width="1000">
     </p>
 
@@ -296,9 +294,9 @@ Dự án này sử dụng Firebase cho Authentication và Firestore. Để chạ
           - Phải tự thêm dữ liệu
           - Tên lyric phải đạt theo cấu trúc [artist] - [title].lrc.txt tương ứng với các field trong Songs
 
-        Bạn muốn tạo file lrc thì dùng [LRC Generator](https://lrcgenerator.com/#google_vignette)
+  Bạn muốn tạo file lrc thì dùng [LRC Generator](https://lrcgenerator.com/#google_vignette)
 
-    <p align="center">
+  <p align="center">
       <img src="screenshots/database/storage_lyric.png" width="1000">
     </p>
 
@@ -306,10 +304,10 @@ Dự án này sử dụng Firebase cho Authentication và Firestore. Để chạ
         Storage songs:
           - Phải tự thêm dữ liệu
           - Tên song phải đạt theo cấu trúc [artist] - [title].mp3 tương ứng với các field trong Songs
-    <p align="center">
+  <p align="center">
       <img src="screenshots/database/storage_song.png" width="1000">
     </p>
-    ```
+  
 
 ### 3. Cấu hình Firebase Storage
 
